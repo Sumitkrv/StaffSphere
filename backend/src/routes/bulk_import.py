@@ -135,7 +135,7 @@ def bulk_import():
             skipped += 1
             continue
 
-        password = (row.get("password") or "").strip() or f"NovaTechSolutions@{login_id[:4]}2025"
+        password = (row.get("password") or "").strip() or f"StaffSphere@{login_id[:4]}2025"
         password_hash = generate_password_hash(password)
 
         doc = {

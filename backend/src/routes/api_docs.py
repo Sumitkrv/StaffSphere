@@ -12,7 +12,7 @@ OPENAPI_SPEC = {
         "title": "HRMS Face Recognition Attendance API",
         "description": "Production-ready API for face-recognition-based attendance management with geofence, liveness detection, task management, and employee lifecycle operations.",
         "version": "1.0.0",
-        "contact": {"name": "NovaTech Solutions Support", "email": "support@prsparkz.com"},
+        "contact": {"name": "StaffSphere Support", "email": "support@prsparkz.com"},
     },
     "servers": [
         {"url": "http://localhost:5001", "description": "Local Development"},

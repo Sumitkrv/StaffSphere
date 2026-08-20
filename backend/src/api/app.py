@@ -339,16 +339,30 @@ class _OrjsonProvider(DefaultJSONProvider):
 
 app = Flask(__name__)
 
-DEFAULT_CORS_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5000",
-    "http://127.0.0.1:5000",
-]
+if APP_ENV in {"prod", "production"}:
+    DEFAULT_CORS_ORIGINS = [
+        "https://staff-sphere-smoky.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5000",
+        "http://127.0.0.1:5000",
+    ]
+else:
+    DEFAULT_CORS_ORIGINS = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:5000",
+        "http://127.0.0.1:5000",
+        "https://staff-sphere-smoky.vercel.app",
+    ]
 
 allowed_origins_env = str(os.getenv("ALLOWED_ORIGINS", "")).strip()
 cors_allow_all = str(os.getenv("CORS_ALLOW_ALL", "false")).strip().lower() in {"1", "true", "yes", "on"}
@@ -807,7 +821,7 @@ def _set_security_headers(response):
     elif _is_origin_allowed(request_origin):
         response.headers["Access-Control-Allow-Origin"] = request_origin
     else:
-        response.headers["Access-Control-Allow-Origin"] = "http://127.0.0.1:5173"
+        response.headers["Access-Control-Allow-Origin"] = cors_origins[0] if cors_origins else request_origin
 
     response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization,Cache-Control,cache-control"
     response.headers["Access-Control-Allow-Methods"] = "GET,POST,PUT,PATCH,DELETE,OPTIONS"
