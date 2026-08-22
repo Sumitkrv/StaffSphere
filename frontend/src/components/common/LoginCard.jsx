@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BRAND_LOGO_SRC, BRAND_NAME } from '../../config/constants'
 
-export default function LoginCard({ title, fields, onSubmit, message }) {
+export default function LoginCard({ title, fields, onSubmit, message, footer }) {
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState(() => Object.fromEntries(fields.map((f) => [f.name, f.defaultValue || ''])))
 
@@ -37,6 +37,7 @@ export default function LoginCard({ title, fields, onSubmit, message }) {
         <button disabled={loading}>{loading ? 'Please wait...' : 'Login'}</button>
       </form>
       <p className="muted">{message}</p>
+      {footer ? <div className="auth-card-footer">{footer}</div> : null}
     </div>
   )
 }

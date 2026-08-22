@@ -8210,6 +8210,45 @@ export default function AdminPage() {
             { name: 'password', placeholder: 'Password', type: 'password', autoComplete: 'current-password' },
           ]}
           onSubmit={handleLogin}
+          footer={
+            <div className="auth-credentials" aria-label="Demo credentials">
+              <div className="auth-credentials-title">Available credentials</div>
+              <div className="auth-credentials-grid">
+                <div className="auth-credentials-group">
+                  <div className="auth-credentials-label">Admin Credentials</div>
+                  <div className="auth-credentials-item">
+                    <span className="auth-credentials-key">User ID</span>
+                    <span className="auth-credentials-value">admin</span>
+                  </div>
+                  <div className="auth-credentials-item">
+                    <span className="auth-credentials-key">Password</span>
+                    <span className="auth-credentials-value">admin123</span>
+                  </div>
+                </div>
+                <div className="auth-credentials-group">
+                  <div className="auth-credentials-label">User Credentials</div>
+                  <div className="auth-credentials-item">
+                    <span className="auth-credentials-key">User ID</span>
+                    <span className="auth-credentials-value">sumi</span>
+                  </div>
+                  <div className="auth-credentials-item">
+                    <span className="auth-credentials-key">Password</span>
+                    <span className="auth-credentials-value">sumit123</span>
+                  </div>
+                  <div className="auth-credentials-route">
+                    User Dashboard:{' '}
+                    <a
+                      href="https://staff-sphere-smoky.vercel.app/#/user/dashboard"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      https://staff-sphere-smoky.vercel.app/#/user/dashboard
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
         />
       </main>
     )
